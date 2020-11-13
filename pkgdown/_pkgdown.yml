@@ -1,0 +1,21 @@
+url: https://samterfa.github.io/umbrella/
+
+author: Sam Terfa
+
+reference:
+- title: DestinationAPIGateway
+  desc:  Destination API Gateway Functions
+  contents:
+  - has_concept("DestinationAPIGateway")
+- title: ManagementAPI
+  desc:  Management API Functions
+  contents:
+  - has_concept("ManagementAPI")
+- title: ReportingAPI
+  desc:  Reporting API Functions
+  contents:
+  - has_concept("ReportingAPI")
+- title: UmbrellaManagementAPI
+  desc:  Umbrella Management API Functions
+  contents:
+  - has_concept("UmbrellaManagementAPI")

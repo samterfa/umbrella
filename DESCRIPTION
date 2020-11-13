@@ -1,0 +1,28 @@
+Package: umbrella
+Title: Cisco Umbrella APIs
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Sam",
+           family = "Terfa",
+           role = c("aut", "cre"),
+           email = "samterfa@gmail.com")
+Description: This package interacts with the Cisco Umbrella's various APIs.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.0.2
+Imports: 
+    httr,
+    glue,
+    dplyr,
+    jsonlite,
+    lubridate,
+    purrr,
+    base64enc,
+    rvest,
+    stringr,
+    xml2,
+    XML,
+    pluralize,
+    magrittr
