@@ -6,8 +6,8 @@
 \usage{
 listDestinations(
   destinationListId,
-  page = NULL,
-  limit = NULL,
+  page = 1,
+  limit = 100,
   organizationId = Sys.getenv("umbrellaOrganizationId")
 )
 }

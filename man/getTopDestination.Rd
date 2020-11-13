@@ -26,7 +26,7 @@ getTopDestination(
   sha256 = NULL,
   antivirusthreats = NULL,
   offset = 0,
-  limit = 5000,
+  limit = 100,
   organizationId = Sys.getenv("umbrellaOrganizationId")
 )
 }

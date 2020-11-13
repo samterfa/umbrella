@@ -21,7 +21,7 @@ listProviderRequestsByHour(
   threattypes = NULL,
   sha256 = NULL,
   offset = 0,
-  limit = 5000
+  limit = 100
 )
 }
 \arguments{

@@ -10,7 +10,7 @@ listCategoryRequestsByOrg(
   to,
   threats = NULL,
   threattypes = NULL,
-  limit = 5000
+  limit = 100
 )
 }
 \arguments{
