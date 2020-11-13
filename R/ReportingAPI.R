@@ -29,8 +29,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listActivities <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	listActivities <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, ports, identityids, identitytypes, applicationid, verdict, ruleid, filename, securityoverridden, bundleid, threats, threattypes, ampdisposition, antivirusthreats"
@@ -78,8 +81,11 @@
 #' @param threattypes threat types filter, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listDns <- function(from, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, order = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	listDns <- function(from, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, order = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, categories, policycategories, ip, order, identityids, identitytypes, applicationid, verdict, threats, threattypes"
@@ -136,8 +142,11 @@
 #' @param tenantcontrols filter requests that were part of a tenant control policy
 #' @concept ReportingAPI
 #' @export
-	listProxies <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, order = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, tenantcontrols = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	listProxies <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, order = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, tenantcontrols = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, order, ports, identityids, identitytypes, applicationid, verdict, ruleid, filename, securityoverridden, bundleid, threats, threattypes, ampdisposition, antivirusthreats, tenantcontrols"
@@ -179,8 +188,11 @@
 #' @param ruleid firewall rule ID
 #' @concept ReportingAPI
 #' @export
-	listFirewalls <- function(from, to, ip = NULL, ports = NULL, identityids = NULL, verdict = NULL, ruleid = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listFirewalls <- function(from, to, ip = NULL, ports = NULL, identityids = NULL, verdict = NULL, ruleid = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, ip, ports, identityids, verdict, ruleid"
@@ -223,8 +235,11 @@
 #' @param verdict verdict filter, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listIps <- function(from, to, categories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, verdict = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listIps <- function(from, to, categories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, verdict = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, categories, ip, ports, identityids, identitytypes, verdict"
@@ -263,8 +278,11 @@
 #' @param sha256 sha256 filter
 #' @concept ReportingAPI
 #' @export
-	listAmpRetrospectives <- function(from, to, ampdisposition = NULL, sha256 = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listAmpRetrospectives <- function(from, to, ampdisposition = NULL, sha256 = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, ampdisposition, sha256"
@@ -318,8 +336,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listTopIdentities <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listTopIdentities <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, ports, identityids, identitytypes, applicationid, verdict, securityoverridden, bundleid, threats, threattypes, ampdisposition, sha256, antivirusthreats"
@@ -374,7 +395,7 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getTopIdentity <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getTopIdentity <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -429,8 +450,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listIdentityDistributions <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listIdentityDistributions <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, ports, identityids, identitytypes, applicationid, verdict, securityoverridden, bundleid, threats, threattypes, ampdisposition, sha256, antivirusthreats"
@@ -485,7 +509,7 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getIdentityDistribution <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getIdentityDistribution <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -541,7 +565,7 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getTopDestination <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getTopDestination <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -585,8 +609,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listTopUrls <- function(from, to, domains = NULL, securityoverridden = NULL, bundleid = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listTopUrls <- function(from, to, domains = NULL, securityoverridden = NULL, bundleid = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, securityoverridden, bundleid, ampdisposition, sha256, antivirusthreats"
@@ -639,8 +666,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listTopCategories <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listTopCategories <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, identityids, identitytypes, applicationid, verdict, securityoverridden, bundleid, threats, threattypes, ampdisposition, sha256, antivirusthreats"
@@ -694,7 +724,7 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getTopCategory <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getTopCategory <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -746,7 +776,10 @@
 #' @concept ReportingAPI
 #' @export
 	listTopEventtypes <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, domains, urls, categories, policycategories, ip, identityids, identitytypes, applicationid, verdict, securityoverridden, bundleid, threats, threattypes, ampdisposition, antivirusthreats"
@@ -794,8 +827,11 @@
 #' @param threattypes threat types filter, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listTopDnsQueryTypes <- function(from, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, order = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listTopDnsQueryTypes <- function(from, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, order = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, categories, policycategories, ip, order, identityids, identitytypes, applicationid, verdict, threats, threattypes"
@@ -849,8 +885,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listRequestsByHour <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listRequestsByHour <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, ports, identityids, identitytypes, applicationid, verdict, securityoverridden, bundleid, threats, threattypes, ampdisposition, sha256, antivirusthreats"
@@ -905,7 +944,7 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getRequestsByHour <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getRequestsByHour <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -959,8 +998,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listRequestsByTimerange <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listRequestsByTimerange <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, ports, identityids, identitytypes, applicationid, verdict, securityoverridden, bundleid, threats, threattypes, ampdisposition, antivirusthreats"
@@ -1014,7 +1056,7 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getRequestsByTimerange <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getRequestsByTimerange <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -1068,8 +1110,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listCategoriesByHour <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listCategoriesByHour <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, identityids, identitytypes, applicationid, verdict, securityoverridden, bundleid, threats, threattypes, ampdisposition, sha256, antivirusthreats"
@@ -1123,7 +1168,7 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getCategoriesByHour <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getCategoriesByHour <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -1176,8 +1221,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listCategoriesByTimerange <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listCategoriesByTimerange <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, identityids, identitytypes, applicationid, verdict, securityoverridden, bundleid, threats, threattypes, ampdisposition, antivirusthreats"
@@ -1230,7 +1278,7 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getCategoriesByTimerange <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getCategoriesByTimerange <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -1269,7 +1317,10 @@
 #' @concept ReportingAPI
 #' @export
 	listDeploymentStatuses <- function(from, to, threats = NULL, threattypes = NULL, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, threats, threattypes"
@@ -1356,7 +1407,7 @@
 #' @param sha256 sha256 filter
 #' @concept ReportingAPI
 #' @export
-	listProviderRequestsByHour <- function(msporganizationid, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, sha256 = NULL, offset = 0, limit = 5000){
+	listProviderRequestsByHour <- function(msporganizationid, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, sha256 = NULL, offset = 0, limit = 100){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -1405,7 +1456,7 @@
 #' @param threattypes threat types filter, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listProviderRequestsByTimerange <- function(msporganizationid, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 5000){
+	listProviderRequestsByTimerange <- function(msporganizationid, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 100){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -1444,7 +1495,7 @@
 #' @param threattypes threat types filter, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listRequestsByOrg <- function(msporganizationid, from, to, threats = NULL, threattypes = NULL, limit = 5000){
+	listRequestsByOrg <- function(msporganizationid, from, to, threats = NULL, threattypes = NULL, limit = 100){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -1483,7 +1534,7 @@
 #' @param threattypes threat types filter, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listRequestsByCategory <- function(msporganizationid, from, to, threats = NULL, threattypes = NULL, limit = 5000){
+	listRequestsByCategory <- function(msporganizationid, from, to, threats = NULL, threattypes = NULL, limit = 100){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -1522,7 +1573,7 @@
 #' @param threattypes threat types filter, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listRequestsByDestination <- function(msporganizationid, from, to, threats = NULL, threattypes = NULL, limit = 5000){
+	listRequestsByDestination <- function(msporganizationid, from, to, threats = NULL, threattypes = NULL, limit = 100){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -1561,7 +1612,7 @@
 #' @param threattypes threat types filter, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listCategoryRequestsByOrg <- function(msporganizationid, from, to, threats = NULL, threattypes = NULL, limit = 5000){
+	listCategoryRequestsByOrg <- function(msporganizationid, from, to, threats = NULL, threattypes = NULL, limit = 100){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -1613,8 +1664,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listBandwidthByHour <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listBandwidthByHour <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, identityids, identitytypes, applicationid, verdict, securityoverridden, bundleid, ampdisposition, sha256, antivirusthreats"
@@ -1665,8 +1719,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listBandwidthByTimerange <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listBandwidthByTimerange <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, identityids, identitytypes, applicationid, verdict, securityoverridden, bundleid, ampdisposition, sha256, antivirusthreats"
@@ -1717,8 +1774,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listTopFiles <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listTopFiles <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, securityoverridden = NULL, bundleid = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, identityids, identitytypes, applicationid, verdict, securityoverridden, bundleid, ampdisposition, sha256, antivirusthreats"
@@ -1772,7 +1832,10 @@
 #' @concept ReportingAPI
 #' @export
 	listTotalRequests <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, sha256 = NULL, antivirusthreats = NULL, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, domains, urls, categories, policycategories, ip, ports, identityids, identitytypes, applicationid, verdict, ruleid, securityoverridden, bundleid, threats, threattypes, ampdisposition, sha256, antivirusthreats"
@@ -1873,8 +1936,11 @@
 #' @param threattypes threat types filter, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listTopThreats <- function(from, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listTopThreats <- function(from, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, categories, policycategories, ip, identityids, identitytypes, applicationid, verdict, threats, threattypes"
@@ -1921,7 +1987,7 @@
 #' @param threattypes threat types filter, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getTopThreat <- function(type, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getTopThreat <- function(type, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -1969,8 +2035,11 @@
 #' @param threattypes threat types filter, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listTopThreatTypes <- function(from, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listTopThreatTypes <- function(from, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, categories, policycategories, ip, identityids, identitytypes, applicationid, verdict, threats, threattypes"
@@ -2017,7 +2086,7 @@
 #' @param threattypes threat types filter, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getTopThreatType <- function(type, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getTopThreatType <- function(type, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -2156,7 +2225,7 @@
 #' @param search a string to search for in the identities
 #' @concept ReportingAPI
 #' @export
-	listIdentities <- function(identitytypes = NULL, search = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	listIdentities <- function(identitytypes = NULL, search = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -2371,7 +2440,10 @@
 #' @concept ReportingAPI
 #' @export
 	listInternals <- function(from, to, domains = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, threats = NULL, threattypes = NULL, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, domains, categories, policycategories, ip, identityids, identitytypes, applicationid, verdict, threats, threattypes"
@@ -2426,8 +2498,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listSummaries <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listSummaries <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, ports, identityids, identitytypes, applicationid, verdict, ruleid, filename, securityoverridden, bundleid, threats, threattypes, ampdisposition, antivirusthreats"
@@ -2483,7 +2558,7 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getSummary <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getSummary <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, ports = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -2538,8 +2613,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listSummariesByCategory <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listSummariesByCategory <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, identityids, identitytypes, applicationid, verdict, ruleid, filename, securityoverridden, bundleid, threats, threattypes, ampdisposition, antivirusthreats"
@@ -2594,7 +2672,7 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getSummariesByCategory <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getSummariesByCategory <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
@@ -2649,8 +2727,11 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	listSummariesByDestination <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
-
+	listSummariesByDestination <- function(from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	  
+	  from <- formatDatetime(from)
+	  to <- formatDatetime(to)
+	  
 		params <- as.list(environment()) %>% purrr::compact()
 
 		queryParamNames <- "from, to, offset, limit, domains, urls, categories, policycategories, ip, identityids, identitytypes, applicationid, verdict, ruleid, filename, securityoverridden, bundleid, threats, threattypes, ampdisposition, antivirusthreats"
@@ -2705,7 +2786,7 @@
 #' @param antivirusthreats threat names caught by antivirus, comma delimited
 #' @concept ReportingAPI
 #' @export
-	getSummariesByDestination <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 5000, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	getSummariesByDestination <- function(type, from, to, domains = NULL, urls = NULL, categories = NULL, policycategories = NULL, ip = NULL, identityids = NULL, identitytypes = NULL, applicationid = NULL, verdict = NULL, ruleid = NULL, filename = NULL, securityoverridden = NULL, bundleid = NULL, threats = NULL, threattypes = NULL, ampdisposition = NULL, antivirusthreats = NULL, offset = 0, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 

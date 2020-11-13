@@ -10,14 +10,21 @@ unlistItems <- function(x){
   }
 }
 
-formatUmbrellaDatetime <- function(datetime){
+formatDatetime <- function(datetime){
   
   if(!stringr::str_detect(datetime, 'day') & !stringr::str_detect(datetime, 'now')){
     
-    datetime <- 1000 * (datetime %>% as_datetime(tz = 'America/Chicago') %>% as.numeric())
+    datetime <- round(as.numeric(lubridate::as_datetime(datetime, tz = Sys.getenv('TZ'))))
+    
+    if(nchar(datetime) != 10) stop('datetime must be coercible using lubridate::as_datetime()')
+    
+    datetime <- 1000 * datetime %>% lubridate::as_datetime(tz = Sys.getenv('TZ')) %>% as.numeric()
+    
+    return(format(datetime, scientific = F))
+    
+  }else{
+    return(datetime)
   }
-  
-  format(datetime, scientific = F)
 }
 
 getAuthHeader <- function(apiType, authType, refresh = F){
@@ -223,7 +230,7 @@ generateReportingAPIfunctions <- function(){
       # Move Limit and Offset to end.
       if(functionText %>% stringr::str_detect("limit")){
         functionText <- functionText %>% stringr::str_replace('limit, ', '')
-        functionText <- paste0(functionText, 'limit = 5000, ')
+        functionText <- paste0(functionText, 'limit = 100, ')
       }
       
       # Move organizationId = Sys.getenv("umbrellaOrganizationId") to end of function params.

@@ -166,7 +166,7 @@
 #' @param limit Limit for page
 #' @concept DestinationAPIGateway
 #' @export
-	listDestinations <- function(destinationListId, page = NULL, limit = NULL, organizationId = Sys.getenv("umbrellaOrganizationId")){
+	listDestinations <- function(destinationListId, page = 1, limit = 100, organizationId = Sys.getenv("umbrellaOrganizationId")){
 
 		params <- as.list(environment()) %>% purrr::compact()
 
